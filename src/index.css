@@ -1,111 +1,552 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ─── Ultimate NetPractice — Custom Design System ─────────────────────────── */
+
+@theme {
+  --color-paper: #FBFBFA;
+  --color-card: #FFFFFF;
+  --color-border: #E9E9E7;
+  --color-text: #37352F;
+  --color-text-secondary: #787774;
+  --color-text-tertiary: #B4B4B0;
+  --color-accent: #2383E2;
+  --color-accent-light: #E8F0FE;
+  --color-success: #0F7B6C;
+  --color-success-light: #DBEDDB;
+  --color-warning: #D9730D;
+  --color-warning-light: #FBECDD;
+  --color-danger: #E03E3E;
+  --color-danger-light: #FBE4E4;
+  --color-pink: #F5E0F0;
+  --color-pink-strong: #C14C8A;
+  --color-green: #D3E5EF;
+  --color-green-strong: #0B6E99;
+  --color-purple: #E8DEEE;
+  --color-purple-strong: #6940A5;
+
+  /* Dark mode equivalents set via CSS variables below */
+}
+
+/* ─── Root Variables ─────────────────────────────────────────────────────── */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --bg: #FBFBFA;
+  --card: #FFFFFF;
+  --border-clr: #E9E9E7;
+  --text: #37352F;
+  --text-sec: #787774;
+  --text-ter: #B4B4B0;
+  --accent: #2383E2;
+  --accent-bg: #E8F0FE;
+  --success: #0F7B6C;
+  --success-bg: #DBEDDB;
+  --warning: #D9730D;
+  --warning-bg: #FBECDD;
+  --danger: #E03E3E;
+  --danger-bg: #FBE4E4;
+  --pink-bg: #F5E0F0;
+  --pink-fg: #C14C8A;
+  --green-bg: #D3E5EF;
+  --green-fg: #0B6E99;
+  --purple-bg: #E8DEEE;
+  --purple-fg: #6940A5;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+  --radius: 8px;
+  --sidebar-w: 280px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+.dark {
+  --bg: #191919;
+  --card: #202020;
+  --border-clr: #2F2F2F;
+  --text: #E8E8E6;
+  --text-sec: #9B9A97;
+  --text-ter: #5A5A58;
+  --accent: #529CCA;
+  --accent-bg: #1C3A52;
+  --success: #4DAB9A;
+  --success-bg: #1A3A33;
+  --warning: #E8883A;
+  --warning-bg: #3A2A18;
+  --danger: #EB5757;
+  --danger-bg: #3A1C1C;
+  --pink-bg: #3A2035;
+  --pink-fg: #E07AB8;
+  --green-bg: #1A2F3A;
+  --green-fg: #5DADE2;
+  --purple-bg: #2A1F3A;
+  --purple-fg: #A77BCA;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.4);
 }
 
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+* {
   box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
+html, body, #root {
+  height: 100%;
   margin: 0;
+  padding: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.25s, color 0.25s;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--text-ter); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-sec); }
+
+/* ─── Utility Classes ────────────────────────────────────────────────────── */
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.ip-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 2px 8px;
   border-radius: 4px;
-  color: var(--text-h);
+  background: var(--accent-bg);
+  color: var(--accent);
+  white-space: nowrap;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.callout {
+  padding: 14px 18px;
+  border-radius: 6px;
+  border-left: 4px solid;
+  margin: 10px 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.callout-info {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.callout-success {
+  background: var(--success-bg);
+  border-color: var(--success);
+}
+
+.callout-warning {
+  background: var(--warning-bg);
+  border-color: var(--warning);
+}
+
+.callout-danger {
+  background: var(--danger-bg);
+  border-color: var(--danger);
+}
+
+/* ─── Notion-style Toggle ────────────────────────────────────────────────── */
+.notion-toggle {
+  border: 1px solid var(--border-clr);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.notion-toggle-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 500;
+  font-size: 0.92rem;
+  transition: background 0.15s;
+}
+
+.notion-toggle-header:hover {
+  background: var(--border-clr);
+}
+
+.notion-toggle-body {
+  padding: 0 14px 14px 36px;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-sec);
+}
+
+/* ─── Interface Cards ────────────────────────────────────────────────────── */
+.interface-card {
+  background: var(--pink-bg);
+  border: 1px solid var(--pink-fg);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  min-width: 220px;
+}
+
+.route-card {
+  background: var(--green-bg);
+  border: 1px solid var(--green-fg);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  min-width: 220px;
+}
+
+/* ─── Input ──────────────────────────────────────────────────────────────── */
+.np-input {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border: 1.5px solid var(--border-clr);
+  border-radius: 5px;
+  background: var(--card);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.np-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(35, 131, 226, 0.15);
+}
+
+.np-input.error {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px rgba(224, 62, 62, 0.12);
+}
+
+.np-input.success {
+  border-color: var(--success);
+}
+
+.np-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ─── Button ─────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.btn-success {
+  background: var(--success);
+  color: #fff;
+}
+.btn-success:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-sec);
+  border: 1px solid var(--border-clr);
+}
+.btn-ghost:hover {
+  background: var(--border-clr);
+  color: var(--text);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 0.78rem;
+}
+
+/* ─── Sidebar ────────────────────────────────────────────────────────────── */
+.sidebar {
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--card);
+  border-right: 1px solid var(--border-clr);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  overflow-y: auto;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.main-content {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+  padding: 28px 36px;
+  max-width: 1200px;
+}
+
+/* ─── Progress Ring ──────────────────────────────────────────────────────── */
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.4s ease;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* ─── Flashcard ──────────────────────────────────────────────────────────── */
+.flashcard {
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────── */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(35, 131, 226, 0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(35, 131, 226, 0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ─── Bit Toggle ─────────────────────────────────────────────────────────── */
+.bit-cell {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.bit-cell.network {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+
+.bit-cell.host {
+  background: var(--card);
+  color: var(--text-sec);
+  border: 1.5px solid var(--border-clr);
+}
+
+.bit-cell:hover {
+  transform: scale(1.1);
+}
+
+/* ─── Terminal ───────────────────────────────────────────────────────────── */
+.bc-terminal {
+  background: #1a1a2e;
+  color: #0f0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  border-radius: var(--radius);
+  padding: 16px;
+  min-height: 200px;
+  overflow-y: auto;
+}
+
+.bc-terminal .prompt {
+  color: #00ff88;
+}
+
+.bc-terminal input {
+  background: transparent;
+  border: none;
+  color: #0f0;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  width: calc(100% - 20px);
+  caret-color: #0f0;
+}
+
+/* ─── Topology Canvas ────────────────────────────────────────────────────── */
+/* ─── Notion Markdown Typography ─────────────────────────────────────────── */
+.prose-notion {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+.prose-notion p {
+  margin: 0.35rem 0;
+}
+.prose-notion p:first-child {
+  margin-top: 0;
+}
+.prose-notion p:last-child {
+  margin-bottom: 0;
+}
+.prose-notion strong {
+  font-weight: 600;
+  color: var(--text);
+}
+.prose-notion em {
+  font-style: italic;
+}
+.prose-notion code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+.prose-notion ul {
+  list-style-type: disc;
+  padding-left: 1.3rem;
+  margin: 0.35rem 0;
+}
+.prose-notion ol {
+  list-style-type: decimal;
+  padding-left: 1.3rem;
+  margin: 0.35rem 0;
+}
+.prose-notion li {
+  margin: 0.15rem 0;
+}
+.prose-notion h1, .prose-notion h2, .prose-notion h3, .prose-notion h4 {
+  font-weight: 600;
+  margin: 0.6rem 0 0.3rem 0;
+  color: var(--text);
+}
+.prose-notion blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 0.8rem;
+  margin: 0.5rem 0;
+  color: var(--text-sec);
+}
+
+/* ─── Topology Canvas ────────────────────────────────────────────────────── */
+.topology-canvas-wrapper {
+  background: var(--card);
+  border: 1px solid var(--border-clr);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.topology-canvas {
+  position: relative;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.node-card {
+  background: var(--card);
+  border: 2px solid var(--border-clr);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  cursor: default;
+  transition: all 0.2s;
+  width: 250px;
+  box-sizing: border-box;
+  box-shadow: var(--shadow-sm);
+}
+
+.node-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.node-card.router {
+  border-color: var(--purple-fg);
+  border-width: 2px;
+  width: 270px;
+}
+
+.node-card.host {
+  border-color: var(--accent);
+  width: 250px;
+}
+
+.node-card.switch {
+  border-color: var(--warning);
+  width: 160px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root { --sidebar-w: 0px; }
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); width: 280px; }
+  .main-content { margin-left: 0; padding: 16px; }
 }
